@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: google-data-cron
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: 
+          containers:
+          - name: google-data-transfer      
+            image: 
+            imagePullPolicy: IfNotPresent
+            args: ["--project-id", "", "--job-name", "", "--source-bucket", "", "--sink-bucket", ""] 
+          restartPolicy: OnFailure
